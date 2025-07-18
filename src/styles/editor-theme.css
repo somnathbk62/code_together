@@ -1,0 +1,149 @@
+/* Custom CodeMirror Theme for Code Together with Complementary Colors */
+
+/* Main editor styles */
+.CodeMirror {
+  background-color: var(--dark-charcoal) !important;
+  color: var(--text-on-dark) !important;
+  border-radius: 8px;
+  border: 1px solid var(--mint-transparent);
+  font-family: "Fira Code", "Consolas", monospace;
+  line-height: 1.6;
+  padding: 10px 0;
+  box-shadow: var(--box-shadow);
+}
+
+/* Cursor */
+.CodeMirror-cursor {
+  border-left: 2px solid var(--mint-primary) !important;
+}
+
+/* Selection */
+.CodeMirror-selected {
+  background: var(--editor-selection) !important;
+}
+
+/* Active line */
+.CodeMirror-activeline-background {
+  background: var(--editor-active-line) !important;
+}
+
+/* Gutters (line numbers) */
+.CodeMirror-gutters {
+  background-color: var(--charcoal-light) !important;
+  border-right: 1px solid var(--mint-transparent) !important;
+  padding-right: 8px;
+}
+
+.CodeMirror-linenumber {
+  color: var(--text-muted) !important;
+}
+
+/* Matching brackets */
+.CodeMirror-matchingbracket {
+  color: var(--editor-matching-bracket) !important;
+  background-color: rgba(255, 74, 127, 0.1) !important;
+  font-weight: bold !important;
+}
+
+/* Syntax Highlighting with Complementary Colors */
+.cm-s-dracula .cm-keyword {
+  color: var(--mint-primary) !important;
+  font-weight: bold;
+}
+
+.cm-s-dracula .cm-operator {
+  color: var(--magenta-primary) !important;
+}
+
+.cm-s-dracula .cm-variable-2 {
+  color: var(--mint-secondary) !important;
+}
+
+.cm-s-dracula .cm-variable {
+  color: var(--text-on-dark) !important;
+}
+
+.cm-s-dracula .cm-property {
+  color: var(--mint-light) !important;
+}
+
+.cm-s-dracula .cm-string {
+  color: var(--magenta-light) !important;
+}
+
+.cm-s-dracula .cm-number {
+  color: var(--magenta-primary) !important;
+}
+
+.cm-s-dracula .cm-comment {
+  color: var(--text-muted) !important;
+  font-style: italic;
+}
+
+.cm-s-dracula .cm-def {
+  color: var(--mint-secondary) !important;
+}
+
+.cm-s-dracula .cm-atom {
+  color: var(--magenta-secondary) !important;
+}
+
+/* Scrollbars */
+.CodeMirror-simplescroll-horizontal,
+.CodeMirror-simplescroll-vertical {
+  background: var(--scrollbar-track) !important;
+}
+
+.CodeMirror-simplescroll-horizontal div,
+.CodeMirror-simplescroll-vertical div {
+  background: var(--scrollbar-thumb) !important;
+  border-radius: 10px !important;
+}
+
+.CodeMirror-simplescroll-horizontal div:hover,
+.CodeMirror-simplescroll-vertical div:hover {
+  background: var(--scrollbar-thumb-hover) !important;
+}
+
+/* Focus state */
+.CodeMirror.CodeMirror-focused {
+  border-color: var(--mint-primary) !important;
+  box-shadow: var(--focus-ring) !important;
+}
+
+/* Run button */
+.run-code-btn {
+  background: linear-gradient(135deg, #4affd4, #2cdfb8) !important;
+  color: #1a1a1a !important;
+  border: none !important;
+  padding: 12px 20px !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  font-weight: bold !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.run-code-btn:hover {
+  background: #2cdfb8 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 15px rgba(74, 255, 212, 0.3) !important;
+}
+
+/* Chat toggle button */
+.chat-toggle-btn {
+  background: linear-gradient(135deg, #ff4a7f, #df2c5f) !important;
+  color: white !important;
+  border: none !important;
+  padding: 10px 15px !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.chat-toggle-btn:hover {
+  background: #df2c5f !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 15px rgba(255, 74, 127, 0.3) !important;
+}

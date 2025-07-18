@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="256" cy="236" r="200" fill="#1E3A8A" />
+  <circle cx="256" cy="236" r="180" fill="#2563EB" />
+  
+  <!-- Code Brackets -->
+  <path d="M160 150L110 236L160 322" stroke="#F59E0B" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M352 150L402 236L352 322" stroke="#F59E0B" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Connecting Line (Collaboration) -->
+  <path d="M200 330L312 142" stroke="#FBBF24" stroke-width="14" stroke-linecap="round" />
+  
+  <!-- Central Connection Point -->
+  <circle cx="256" cy="236" r="35" fill="#1E3A8A" />
+  <circle cx="256" cy="236" r="25" fill="#F59E0B" />
+  
+  <!-- Binary Code Elements -->
+  <circle cx="190" cy="190" r="10" fill="#FBBF24" />
+  <circle cx="220" cy="190" r="10" fill="#FBBF24" />
+  <circle cx="190" cy="220" r="10" fill="#FBBF24" />
+  <circle cx="220" cy="220" r="10" fill="#FBBF24" opacity="0.5" />
+  <circle cx="190" cy="250" r="10" fill="#FBBF24" opacity="0.5" />
+  <circle cx="220" cy="250" r="10" fill="#FBBF24" />
+  
+  <circle cx="292" cy="190" r="10" fill="#FBBF24" />
+  <circle cx="322" cy="190" r="10" fill="#FBBF24" opacity="0.5" />
+  <circle cx="292" cy="220" r="10" fill="#FBBF24" opacity="0.5" />
+  <circle cx="322" cy="220" r="10" fill="#FBBF24" />
+  <circle cx="292" cy="250" r="10" fill="#FBBF24" />
+  <circle cx="322" cy="250" r="10" fill="#FBBF24" opacity="0.5" />
+  
+  <!-- Text "CODE TOGETHER" -->
+  <text x="256" y="420" font-family="Arial, sans-serif" font-weight="bold" font-size="40" fill="#1E3A8A" text-anchor="middle">CODE TOGETHER</text>
+  
+  <!-- Coding Symbol -->
+  <text x="256" y="460" font-family="monospace" font-weight="bold" font-size="24" fill="#F59E0B" text-anchor="middle">&lt;/&gt;</text>
+</svg>

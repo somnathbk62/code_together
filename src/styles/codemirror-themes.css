@@ -1,0 +1,231 @@
+/* Custom CodeMirror Themes for Code Together */
+
+/* Dark Theme - Based on Dracula but customized */
+.cm-s-code-together-dark.CodeMirror {
+  background-color: var(--neutral-900);
+  color: var(--neutral-100);
+}
+
+.cm-s-code-together-dark .CodeMirror-gutters {
+  background-color: var(--neutral-800);
+  border-right: 1px solid var(--neutral-700);
+}
+
+.cm-s-code-together-dark .CodeMirror-linenumber {
+  color: var(--neutral-500);
+}
+
+.cm-s-code-together-dark .CodeMirror-cursor {
+  border-left: 1px solid var(--primary);
+}
+
+.cm-s-code-together-dark .CodeMirror-selected {
+  background: rgba(37, 99, 235, 0.2);
+}
+
+.cm-s-code-together-dark .CodeMirror-line::selection,
+.cm-s-code-together-dark .CodeMirror-line > span::selection,
+.cm-s-code-together-dark .CodeMirror-line > span > span::selection {
+  background: rgba(37, 99, 235, 0.2);
+}
+
+.cm-s-code-together-dark .CodeMirror-activeline-background {
+  background: rgba(37, 99, 235, 0.1);
+}
+
+.cm-s-code-together-dark .cm-keyword {
+  color: #ff79c6;
+}
+
+.cm-s-code-together-dark .cm-operator {
+  color: #ff79c6;
+}
+
+.cm-s-code-together-dark .cm-variable-2 {
+  color: #80cbc4;
+}
+
+.cm-s-code-together-dark .cm-variable-3,
+.cm-s-code-together-dark .cm-type {
+  color: #ffb86c;
+}
+
+.cm-s-code-together-dark .cm-builtin {
+  color: #8be9fd;
+}
+
+.cm-s-code-together-dark .cm-atom {
+  color: #bd93f9;
+}
+
+.cm-s-code-together-dark .cm-number {
+  color: #bd93f9;
+}
+
+.cm-s-code-together-dark .cm-def {
+  color: #50fa7b;
+}
+
+.cm-s-code-together-dark .cm-string {
+  color: #f1fa8c;
+}
+
+.cm-s-code-together-dark .cm-string-2 {
+  color: #f1fa8c;
+}
+
+.cm-s-code-together-dark .cm-comment {
+  color: #6272a4;
+}
+
+.cm-s-code-together-dark .cm-tag {
+  color: #ff79c6;
+}
+
+.cm-s-code-together-dark .cm-meta {
+  color: #6272a4;
+}
+
+.cm-s-code-together-dark .cm-attribute {
+  color: #50fa7b;
+}
+
+.cm-s-code-together-dark .cm-property {
+  color: #66d9ef;
+}
+
+.cm-s-code-together-dark .cm-qualifier {
+  color: #50fa7b;
+}
+
+.cm-s-code-together-dark .cm-variable {
+  color: #8be9fd;
+}
+
+.cm-s-code-together-dark .cm-tag {
+  color: #ff79c6;
+}
+
+.cm-s-code-together-dark .cm-error {
+  color: #ff5555;
+}
+
+.cm-s-code-together-dark .CodeMirror-matchingbracket {
+  text-decoration: underline;
+  color: #f8f8f2 !important;
+}
+
+/* Light Theme - Softer than default */
+.cm-s-code-together-light.CodeMirror {
+  background-color: var(--neutral-200); /* Slightly darker than white for less brightness */
+  color: var(--neutral-800);
+}
+
+.cm-s-code-together-light .CodeMirror-gutters {
+  background-color: var(--neutral-300);
+  border-right: 1px solid var(--neutral-400);
+}
+
+.cm-s-code-together-light .CodeMirror-linenumber {
+  color: var(--neutral-500);
+}
+
+.cm-s-code-together-light .CodeMirror-cursor {
+  border-left: 1px solid var(--primary);
+}
+
+.cm-s-code-together-light .CodeMirror-selected {
+  background: rgba(37, 99, 235, 0.1);
+}
+
+.cm-s-code-together-light .CodeMirror-line::selection,
+.cm-s-code-together-light .CodeMirror-line > span::selection,
+.cm-s-code-together-light .CodeMirror-line > span > span::selection {
+  background: rgba(37, 99, 235, 0.1);
+}
+
+.cm-s-code-together-light .CodeMirror-activeline-background {
+  background: rgba(37, 99, 235, 0.05);
+}
+
+.cm-s-code-together-light .cm-keyword {
+  color: #7c3aed; /* Purple */
+}
+
+.cm-s-code-together-light .cm-operator {
+  color: #7c3aed;
+}
+
+.cm-s-code-together-light .cm-variable-2 {
+  color: #0d9488; /* Teal */
+}
+
+.cm-s-code-together-light .cm-variable-3,
+.cm-s-code-together-light .cm-type {
+  color: #b45309; /* Amber */
+}
+
+.cm-s-code-together-light .cm-builtin {
+  color: #0284c7; /* Sky */
+}
+
+.cm-s-code-together-light .cm-atom {
+  color: #7c3aed; /* Purple */
+}
+
+.cm-s-code-together-light .cm-number {
+  color: #7c3aed; /* Purple */
+}
+
+.cm-s-code-together-light .cm-def {
+  color: #16a34a; /* Green */
+}
+
+.cm-s-code-together-light .cm-string {
+  color: #ca8a04; /* Yellow */
+}
+
+.cm-s-code-together-light .cm-string-2 {
+  color: #ca8a04; /* Yellow */
+}
+
+.cm-s-code-together-light .cm-comment {
+  color: #64748b; /* Slate */
+}
+
+.cm-s-code-together-light .cm-tag {
+  color: #be185d; /* Pink */
+}
+
+.cm-s-code-together-light .cm-meta {
+  color: #64748b; /* Slate */
+}
+
+.cm-s-code-together-light .cm-attribute {
+  color: #16a34a; /* Green */
+}
+
+.cm-s-code-together-light .cm-property {
+  color: #0284c7; /* Sky */
+}
+
+.cm-s-code-together-light .cm-qualifier {
+  color: #16a34a; /* Green */
+}
+
+.cm-s-code-together-light .cm-variable {
+  color: #0284c7; /* Sky */
+}
+
+.cm-s-code-together-light .cm-tag {
+  color: #be185d; /* Pink */
+}
+
+.cm-s-code-together-light .cm-error {
+  color: #dc2626; /* Red */
+}
+
+.cm-s-code-together-light .CodeMirror-matchingbracket {
+  text-decoration: underline;
+  color: #1e293b !important; /* Slate */
+}

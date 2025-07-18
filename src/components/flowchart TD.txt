@@ -1,0 +1,49 @@
+
+
+flowchart TD
+    A[Start] --> B[Visit Home Page]
+    B --> C{Has Room ID?}
+    
+    C -->|Yes| D[Enter Room ID]
+    C -->|No| E[Create New Room]
+    
+    D --> F[Enter Username]
+    E --> F
+    
+    F --> G[Join Room]
+    G --> H[Room Exists?]
+    
+    H -->|Yes| I[Username Available?]
+    H -->|No| J[Error: Room Not Found]
+    J --> B
+    
+    I -->|Yes| K[Join Successful]
+    I -->|No| L[Error: Username Taken]
+    L --> F
+    
+    K --> M[Load Editor Page]
+    M --> N[Connect to Socket.io]
+    N --> O[Sync Code State]
+    O --> P[Load Chat History]
+    P --> Q[Update User List]
+    
+    Q --> R{User Action?}
+    R -->|Edit Code| S[Sync Changes to All Users]
+    R -->|Send Message| T[Broadcast Message]
+    R -->|Execute Code| U[Send to JDoodle API]
+    R -->|Leave Room| V[Disconnect Socket]
+    
+    S --> R
+    T --> R
+    U --> W[Display Results]
+    W --> R
+    V --> X[End]
+    
+    classDef start fill:#f9f,stroke:#333,stroke-width:1px;
+    classDef process fill:#fff,stroke:#000,stroke-width:1px;
+    classDef decision fill:#bdf,stroke:#333,stroke-width:1px;
+    classDef end fill:#dfd,stroke:#333,stroke-width:1px;
+    
+    class A,X end;
+    class B,D,E,F,G,J,K,L,M,N,O,P,Q,S,T,U,V,W process;
+    class C,H,I,R decision;

@@ -1,0 +1,29 @@
+/* File Upload Container */
+.file-upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #444;
+  background: #1e1e1e;
+  border-radius: 5px;
+}
+
+/* File Input (Hidden) */
+.file-upload input {
+  display: none;
+}
+
+/* Custom Upload Button */
+.file-upload label {
+  padding: 10px 15px;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.file-upload label:hover {
+  background: #0056b3;
+}

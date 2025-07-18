@@ -1,0 +1,36 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    id 'com.android.application' version '8.1.0' apply false
+    id 'com.android.library' version '8.1.0' apply false
+}
+
+// Fix for namespace mapping issues
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            force 'androidx.core:core-ktx:1.12.0'
+            force 'androidx.appcompat:appcompat:1.6.1'
+            force 'com.google.android.material:material:1.10.0'
+            force 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+            // Force test dependencies
+            force 'junit:junit:4.13.2'
+            force 'androidx.test:core:1.5.0'
+            force 'androidx.test:runner:1.5.2'
+            force 'androidx.test:rules:1.5.0'
+            force 'androidx.test.ext:junit:1.1.5'
+            force 'androidx.test.espresso:espresso-core:3.5.1'
+        }
+    }
+}
+
+// Task to clean the build directory
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

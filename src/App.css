@@ -1,0 +1,188 @@
+/* Centers content in homepage */
+.homePageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  height: 100vh;
+}
+
+/* Styling for form container */
+.formWrapper {
+  background: #282a36;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+}
+
+/* Footer styling */
+footer {
+  position: fixed;
+  bottom: 0;
+}
+
+footer a {
+  color: #4aee88;
+}
+
+/* Input field wrapper */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label styling */
+.mainLabel {
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+/* Logo styling */
+.homePageLogo {
+  height: 150px;
+  width: 200px;
+  margin-bottom: 30px;
+  border: 4px solid #4aed88;
+  border-radius: 14px;
+}
+
+/* Input field styling */
+.inputBox {
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  margin-bottom: 14px;
+  background: #eee;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Button styling */
+.btn {
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Styling for join and leave buttons */
+.joinBtn,
+.leaveBtn {
+  background: #4aed88;
+  width: 100px;
+  margin-left: auto;
+}
+
+.joinBtn:hover,
+.leaveBtn:hover {
+  background: #2b824c;
+}
+
+/* Info message styling */
+.createInfo {
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+/* Create new button styling */
+.createNewBtn {
+  color: #4aed88;
+  text-decoration: underline;
+  border-bottom: 1px solid #4aed88;
+  transition: all 0.3s ease-in-out;
+  border: none;
+  background: none;
+}
+
+.createNewBtn:hover,
+footer a:hover {
+  color: #368654;
+  border-color: #368654;
+}
+
+/* Main wrapper for app layout */
+.mainWrap {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  height: 100vh;
+  min-height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* Removes scrollbar */
+}
+
+/* Sidebar styling */
+.aside {
+  background: #1c1e29;
+  padding: 16px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Ensures content inside aside stretches properly */
+.asideInner {
+  flex: 1;
+  min-height: 0;
+}
+
+/* Styling for client list - moved to EditorPage.css */
+/* .clientsList styles are now in EditorPage.css */
+
+/* Individual client container - moved to EditorPage.css */
+/* .client styles are now in EditorPage.css */
+
+/* Username styling - moved to EditorPage.css */
+/* .userName styles are now in EditorPage.css */
+
+/* Logo container */
+.logo {
+  border-bottom: 1px solid #424242;
+  padding-bottom: 10px;
+}
+
+/* Logo image styling */
+.logoImage {
+  height: 60px;
+}
+
+/* Leave button full width */
+.leaveBtn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Code editor styling */
+.CodeMirror {
+  height: 100%;
+  width: 100%;
+  flex: 1;
+  font-size: 20px;
+  line-height: 1.6;
+  overflow: hidden;
+}
+
+/* Button container layout */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Ensuring no scrollbars anywhere */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}

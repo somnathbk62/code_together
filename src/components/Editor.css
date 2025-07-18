@@ -1,0 +1,414 @@
+/* Editor Component Styles */
+
+.editor-container {
+  display: flex;
+  height: 100%;
+  max-height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s ease;
+}
+
+.editor-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1rem;
+  overflow: auto; /* Allow scrolling */
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  max-height: 100vh; /* Ensure it doesn't exceed viewport height */
+  position: relative; /* For absolute positioning of children */
+  z-index: 0; /* Base z-index */
+}
+
+/* CodeMirror customization */
+.CodeMirror {
+  height: 100% !important;
+  min-height: 200px; /* Ensure minimum height for editor */
+  font-size: 16px;
+  line-height: 1.6;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Editor controls */
+.editor-controls {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+/* Language selector */
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.language-label {
+  color: var(--primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+  line-height: var(--line-height-normal);
+}
+
+.language-dropdown {
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  width: auto;
+}
+
+.language-dropdown:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: var(--focus-ring);
+}
+
+/* Terminal */
+.terminal-container {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+  height: 200px;
+  min-height: 50px;
+  max-height: calc(
+    100vh - 350px
+  ); /* Limit maximum height to prevent overlapping */
+  overflow-y: auto;
+  font-family: "Fira Code", monospace;
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    height 0.2s ease;
+  position: relative;
+  /* Remove the native resize handle since we're implementing our own */
+  resize: none;
+  flex-shrink: 0; /* Prevent terminal from shrinking */
+  z-index: 1; /* Higher than editor-main but lower than chat */
+}
+
+.terminal-header {
+  color: var(--primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-tight);
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: ns-resize;
+  user-select: none;
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-secondary);
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.terminal-header:hover {
+  background-color: var(--bg-hover);
+  border-bottom-color: var(--primary);
+}
+
+.terminal-header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.terminal-header:hover::before {
+  background-color: var(--primary-transparent);
+}
+
+.terminal-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.resize-indicator {
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1;
+  user-select: none;
+}
+
+.terminal-container.resizing {
+  user-select: none;
+  cursor: ns-resize;
+  transition: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-transparent);
+}
+
+.terminal-container.resizing .terminal-header {
+  background-color: var(--primary-transparent);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Removed terminal size buttons */
+
+.terminal-content {
+  color: var(--primary);
+  font-family: "Fira Code", monospace;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+}
+
+/* Chat section */
+.chat-section {
+  width: 350px;
+  border-left: 1px solid var(--border-color);
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  z-index: 10; /* Higher than terminal to prevent overlapping */
+  position: relative;
+}
+
+/* Spacer */
+.spacer {
+  flex: 1;
+}
+
+/* Button group */
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Buttons */
+.btn,
+.chat-toggle-btn,
+.run-code-btn {
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  border: none;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #4affd4, #2cdfb8);
+  color: #1a1a1a;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(74, 255, 212, 0.3);
+}
+
+.btn-secondary {
+  background-color: #2d2d2d;
+  color: #4affd4;
+  border: 1px solid #4affd4;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(74, 255, 212, 0.1);
+}
+
+/* Chat toggle button */
+.chat-toggle-btn {
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  min-width: 80px;
+}
+
+.chat-toggle-btn:hover {
+  background-color: var(--primary-transparent);
+  transform: translateY(-2px);
+}
+
+/* Run code button */
+.run-code-btn {
+  background: var(--primary-gradient);
+  color: var(--text-on-dark);
+  min-width: 70px;
+}
+
+.run-code-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--primary-semi-transparent);
+}
+
+/* Language Search Modal */
+.language-search-modal {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 300px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  margin-top: 8px;
+  animation: fadeIn 0.2s ease;
+}
+
+.language-search-content {
+  padding: 1rem;
+}
+
+.language-search-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.language-search-header h3 {
+  margin: 0;
+  font-size: var(--font-size-md);
+  color: var(--primary);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  color: var(--primary);
+  background-color: var(--primary-transparent);
+}
+
+.language-search-input {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
+}
+
+.language-search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-transparent);
+}
+
+.language-list {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.language-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.language-item:last-child {
+  border-bottom: none;
+}
+
+.language-item:hover {
+  background-color: var(--bg-hover);
+}
+
+.language-item.selected {
+  background-color: var(--primary-transparent);
+  color: var(--primary);
+  font-weight: var(--font-weight-medium);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .editor-container {
+    flex-direction: column;
+  }
+
+  .chat-section {
+    width: 100%;
+    height: 300px;
+    border-left: none;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .editor-controls {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .language-selector {
+    flex: 1 1 auto;
+    min-width: 200px;
+  }
+
+  .spacer {
+    display: none;
+  }
+
+  .button-group {
+    flex: 0 0 auto;
+    justify-content: flex-end;
+  }
+}

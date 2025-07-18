@@ -1,0 +1,95 @@
+plugins {
+    id 'com.android.application'
+}
+
+// Add a task to run tests
+tasks.register('runTests') {
+    dependsOn 'testDebugUnitTest'
+    doLast {
+        println "Unit tests completed successfully"
+    }
+}
+
+android {
+    namespace 'com.cometchat.sample'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.cometchat.sample"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testHandleProfiling true
+        testFunctionalTest true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            testCoverageEnabled true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+            returnDefaultValues = true
+        }
+    }
+
+    sourceSets {
+        // Main source set
+        main {
+            java.srcDirs = ['src/main/java']
+            res.srcDirs = ['src/main/res']
+        }
+
+        // Test source sets
+        test {
+            java.srcDirs = ['src/test/java']
+            resources.srcDirs = ['src/test/resources']
+        }
+
+        androidTest {
+            java.srcDirs = ['src/androidTest/java']
+            resources.srcDirs = ['src/androidTest/resources']
+        }
+    }
+
+    buildFeatures {
+        // Disable the experimental feature causing warnings
+        nonTransitiveRClass = false
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.10.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // CometChat SDK
+    implementation 'com.cometchat:pro-android-chat-sdk:3.0.1'
+    implementation 'com.cometchat:pro-android-calls-sdk:2.1.0'
+
+    // Testing dependencies
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito:mockito-core:4.0.0'
+
+    // Android testing dependencies
+    androidTestImplementation 'androidx.test:core:1.5.0'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'androidx.test:rules:1.5.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
