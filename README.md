@@ -97,11 +97,17 @@ npm start
 ### Home Page
 ![Home Page](screenshots/Home_Page.png)
 
+### Dark Mode - Mode Page
+![Dark Mode Mode Page](screenshots/Dark_mode_modepage.png)
+
 ### Room ID Entry
 ![Room ID](screenshots/Room_id.png)
 
 ### Editor Page
 ![Editor Page](screenshots/Editorpage.png)
+
+### Dark Mode - Editor Page
+![Dark Mode Editor Page](screenshots/Dark_mode_editorpage.png)
 
 ### Code Synchronization
 ![Code Synchronization](screenshots/code_synchronization.png)
@@ -124,11 +130,6 @@ npm start
 ![Multi Language](screenshots/Multi_language.png)
 ![Multi Language 2](screenshots/Multi_language2.png)
 
-### Dark Mode - Editor Page
-![Dark Mode Editor Page](screenshots/Dark_mode_editorpage.png)
-
-### Dark Mode - Mode Page
-![Dark Mode Mode Page](screenshots/Dark_mode_modepage.png)
 
 ---
 
@@ -136,21 +137,3 @@ npm start
 
 Check out the live project: [Demo on Netlify](https://your-demo-site.netlify.app)
 
----
-
-## 🤝 Contributing
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/YourFeature`)
-3. Commit your changes (`git commit -am 'Add new feature'`)
-4. Push to the branch (`git push origin feature/YourFeature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-This project is open source. See [LICENSE](LICENSE) for details.
-
----
-
-## 📞 Contact
-For questions or support, open an issue or contact the maintainer.
