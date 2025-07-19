@@ -136,7 +136,7 @@ const Editor = ({ socketRef, roomId, onCodeChange, username }) => {
       socket.off(ACTIONS.CODE_CHANGE, handleCodeChange);
       socket.off(ACTIONS.GET_LATEST_CODE);
     };
-  }, [socketRef]);
+  }, [socketRef, roomId]);
 
   // Handle terminal resize
   const handleTerminalResize = useCallback((newHeight) => {
