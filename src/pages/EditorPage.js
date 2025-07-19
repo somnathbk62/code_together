@@ -86,7 +86,7 @@ const EditorPage = () => {
         socketRef.current.disconnect();
       }
     };
-  }, []);
+  }, [roomId, reactNavigator, location.state?.username]);
 
   async function copyRoomId() {
     try {

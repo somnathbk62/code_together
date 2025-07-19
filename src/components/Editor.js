@@ -114,7 +114,7 @@ const Editor = ({ socketRef, roomId, onCodeChange, username }) => {
         editorRef.current = null;
       }
     };
-  }, []);
+  }, [socketRef, roomId, isDarkTheme, onCodeChange]);
 
   useEffect(() => {
     const socket = socketRef.current;
@@ -136,7 +136,7 @@ const Editor = ({ socketRef, roomId, onCodeChange, username }) => {
       socket.off(ACTIONS.CODE_CHANGE, handleCodeChange);
       socket.off(ACTIONS.GET_LATEST_CODE);
     };
-  }, [socketRef.current, roomId]);
+  }, [socketRef]);
 
   // Handle terminal resize
   const handleTerminalResize = useCallback((newHeight) => {

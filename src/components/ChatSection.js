@@ -299,7 +299,7 @@ const ChatSection = ({ roomId, onClose, username, socketRef }) => {
       // This allows the chat history to persist when closing/reopening the chat
       // The history will only be cleared when leaving the room or closing the browser
     };
-  }, [roomId, handleIncomingMessage, username, clearChatHistory]);
+  }, [roomId, handleIncomingMessage, username, clearChatHistory, socketRef]);
 
   const safeDecode = (text) => {
     try {
