@@ -1,17 +1,29 @@
+require("dotenv").config({ path: ".env.backend" });
 const express = require("express");
 const http = require("http");
-const path = require("path");
 const cors = require("cors");
 const { Server } = require("socket.io");
 const ACTIONS = require("./src/Actions");
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+
+// Dynamic CORS Origin Configuration
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(",").map((origin) => origin.trim())
+  : ["http://localhost:3000"];
 
 // ✅ CORS Configuration
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps, curl, etc.)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"],
   credentials: true,
@@ -21,6 +33,15 @@ app.use(express.json());
 
 const userSocketMap = {};
 const codeRef = {}; // ✅ Store latest code for each room
+
+// Update Socket.io CORS configuration
+const io = new Server(server, {
+  cors: {
+    origin: allowedOrigins,
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+});
 
 io.on("connection", (socket) => {
   console.log("Socket connected:", socket.id);
@@ -145,7 +166,10 @@ const codeExecutionLimiter = rateLimit({
 
 // Import necessary libraries
 const axios = require("axios");
-require("dotenv").config();
+const multer = require("multer");
+
+// Configure multer for safe file uploads (memory storage for demo; adjust as needed)
+const upload = multer({ storage: multer.memoryStorage() });
 
 // Apply the rate limiter to the /run endpoint
 app.post("/run", codeExecutionLimiter, async (req, res) => {
@@ -182,10 +206,22 @@ app.post("/run", codeExecutionLimiter, async (req, res) => {
   }
 });
 
-// ✅ Serve React frontend
-app.use(express.static("public"));
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+// File upload endpoint (must be placed below other routes, before server.listen)
+app.post("/upload", upload.single("file"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ message: "No file uploaded" });
+  }
+  // Return file info (do not save to disk in this demo)
+  const { originalname, mimetype, size } = req.file;
+  res.json({
+    message: "File uploaded successfully",
+    file: { name: originalname, mimetype, size },
+  });
+});
+
+// Health check endpoint
+app.get("/healthz", (req, res) => {
+  res.json({ status: "ok", time: Date.now() });
 });
 
 // ✅ Start the server

@@ -20,6 +20,7 @@
     "gsap": "^3.12.7",
     "http": "^0.0.1-security",
     "isolated-vm": "^5.0.3",
+    "multer": "^2.0.2",
     "nth-check": "^2.1.1",
     "path": "^0.12.7",
     "react": "^17.0.2",
@@ -37,10 +38,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "set PORT=3000 && react-scripts --openssl-legacy-provider start",
+    "start": "node server.js",
+    "backend:dev": "nodemon server.js",
+    "client:dev": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts --openssl-legacy-provider build",
-    "server": "nodemon server.js",
-    "server:prod": "node server.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
