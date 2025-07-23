@@ -26,6 +26,7 @@ import {
   successHighlight,
   shakeAnimation,
 } from "../utils/animations";
+import debounce from "../utils/debounce";
 
 // Import resizing styles
 // ✅ Editor Component
@@ -71,6 +72,27 @@ const Editor = ({ socketRef, roomId, onCodeChange, username }) => {
     []
   );
 
+  const hasInitialSync = useRef(false);
+  const pendingCodeRef = useRef("");
+
+  // Debounced emit for code changes
+  const debouncedEmitCodeChange = useMemo(
+    () =>
+      debounce((code) => {
+        if (
+          hasInitialSync.current &&
+          socketRef.current &&
+          roomId !== undefined
+        ) {
+          if (process.env.NODE_ENV !== "production") {
+            console.debug("[CodeTogether] Emitting CODE_CHANGE", { code });
+          }
+          socketRef.current.emit(ACTIONS.CODE_CHANGE, { roomId, code });
+        }
+      }, 300),
+    [socketRef, roomId]
+  );
+
   // ✅ Update theme when it changes
   useEffect(() => {
     if (editorRef.current) {
@@ -104,7 +126,8 @@ const Editor = ({ socketRef, roomId, onCodeChange, username }) => {
       editorRef.current.on("change", () => {
         const code = editorRef.current.getValue();
         onCodeChange(code);
-        socketRef.current.emit(ACTIONS.CODE_CHANGE, { roomId, code });
+        pendingCodeRef.current = code;
+        debouncedEmitCodeChange(code);
       });
     }
 
@@ -114,29 +137,33 @@ const Editor = ({ socketRef, roomId, onCodeChange, username }) => {
         editorRef.current = null;
       }
     };
-  }, [socketRef, roomId, isDarkTheme, onCodeChange]);
+  }, [socketRef, roomId, isDarkTheme, onCodeChange, debouncedEmitCodeChange]);
 
   useEffect(() => {
     const socket = socketRef.current;
     if (!socket) return;
 
     const handleCodeChange = ({ code }) => {
+      if (process.env.NODE_ENV !== "production") {
+        console.debug("[CodeTogether] Received CODE_CHANGE", { code });
+      }
       if (editorRef.current) {
         const currentCode = editorRef.current.getValue();
-        if (typeof code === "string" && code.trim() !== currentCode.trim()) {
+        // Strict inequality, allow empty string overwrite
+        if (code !== currentCode) {
           editorRef.current.setValue(code);
+          onCodeChange(code);
         }
+      }
+      if (!hasInitialSync.current) {
+        hasInitialSync.current = true;
       }
     };
 
-    socket.on(ACTIONS.CODE_CHANGE, handleCodeChange);
-    socket.emit(ACTIONS.GET_LATEST_CODE, { roomId });
-
     return () => {
       socket.off(ACTIONS.CODE_CHANGE, handleCodeChange);
-      socket.off(ACTIONS.GET_LATEST_CODE);
     };
-  }, [socketRef, roomId]);
+  }, [socketRef, roomId, onCodeChange]);
 
   // Handle terminal resize
   const handleTerminalResize = useCallback((newHeight) => {
