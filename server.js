@@ -12,6 +12,7 @@ const server = http.createServer(app);
 const allowedOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(",").map((origin) => origin.trim())
   : ["http://localhost:3000"];
+// CORS and Socket.io will use allowedOrigins from env
 
 // ✅ CORS Configuration
 const corsOptions = {
@@ -69,6 +70,11 @@ io.on("connection", (socket) => {
         isNewUser, // Add flag to indicate if this is a new user joining
       });
     });
+
+    // --- Code Sync Fallback: Emit latest code to the joining user ---
+    if (codeRef[roomId]) {
+      io.to(socket.id).emit(ACTIONS.CODE_CHANGE, { code: codeRef[roomId] });
+    }
   });
 
   // Handle join-room event for chat component
@@ -227,3 +233,8 @@ app.get("/healthz", (req, res) => {
 // ✅ Start the server
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+// --- Keep-alive function to avoid Render cold start ---
+setInterval(() => {
+  axios.get(`http://localhost:${PORT || 5000}/healthz`).catch(() => {});
+}, 12 * 60 * 1000); // every 12 minutes
