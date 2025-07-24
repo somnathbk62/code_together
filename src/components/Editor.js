@@ -160,6 +160,8 @@ const Editor = ({ socketRef, roomId, onCodeChange, username }) => {
       }
     };
 
+    socket.on(ACTIONS.CODE_CHANGE, handleCodeChange); // <-- Ensure this is present
+
     return () => {
       socket.off(ACTIONS.CODE_CHANGE, handleCodeChange);
     };
