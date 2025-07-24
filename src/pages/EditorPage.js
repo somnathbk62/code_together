@@ -63,10 +63,6 @@ const EditorPage = () => {
             console.log(`${username} joined`);
           }
           setClients(clients);
-          socketRef.current.emit(ACTIONS.SYNC_CODE, {
-            code: codeRef.current,
-            socketId,
-          });
         }
       );
 
@@ -153,6 +149,10 @@ const EditorPage = () => {
           username={location.state?.username}
           onCodeChange={(code) => {
             codeRef.current = code;
+            // Also emit to new users (server emits GET_LATEST_CODE to sender)
+            if (socketRef.current && roomId) {
+              socketRef.current.emit(ACTIONS.CODE_CHANGE, { roomId, code });
+            }
           }}
         />
       </div>
